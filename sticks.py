@@ -5,14 +5,13 @@ class Player:
 
     def __init__(self, name, lose_bool=False):
         self.name = name
-        self.moves_list = []
         self.lose_bool = lose_bool
 
     def __str__(self):
-        return "Player 1: {}".format(self.name)
+        return "Player name: {}".format(self.name)
 
     def __eq__(self, other):
-        return self.name == other.name and self.moves == other.moves
+        return self.name == other.name
 
     def get_move(self, game):
         move = 0
@@ -31,7 +30,7 @@ class Game:
         self.stick_num = stick_total
 
     def __str__(self):
-        return "This game is between {} and {} with {} sticks. ".format(self.player1, self.player2, self.stick_num)
+        return "This game is between {} and {} with {} sticks.".format(self.player1, self.player2, self.stick_num)
 
 
     def __eq__(self, other):
@@ -42,6 +41,7 @@ class Game:
 class AI:
 
     def __init__(self, game):
+        self.name = "AI"
         self.temp_moves_list = []
         self.lose_bool = False
         # self.all_poss_moves_dict = enumerate([[1,2,3]] * game.stick_num, 1)
@@ -52,7 +52,8 @@ class AI:
         return "AI"
 
     def __eq__(self, other):
-        return self.name == other.name and self.moves == other.moves
+        return (self.name == other.name and
+        self.all_poss_moves_dict == other.all_poss_moves_dict)
 
     def get_move(self, game):
         if game.stick_num > len(self.all_poss_moves_dict):
@@ -171,4 +172,5 @@ def main():
                 else:
                     break
 
-main()
+# main()
+print()

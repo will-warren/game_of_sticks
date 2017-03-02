@@ -13,13 +13,14 @@ class Player:
     def __eq__(self, other):
         return self.name == other.name
 
-    def get_move(self, game):
+    def get_move(self, game, test_bool):
         move = 0
-        move = int(input("\nHow many sticks do you want to pick up, {}? (1-3)".format(self.name)))
-        while move < 1 or move > 3:
-            print("That wasn't a valid choice, {}".format(self.name))
+        if not test_bool:
             move = int(input("\nHow many sticks do you want to pick up, {}? (1-3)".format(self.name)))
-        self.moves_list.append(move)
+            while move < 1 or move > 3:
+                print("That wasn't a valid choice, {}".format(self.name))
+                move = int(input("\nHow many sticks do you want to pick up, {}? (1-3)".format(self.name)))
+            self.moves_list.append(move)
         return move
 
 class Game:
@@ -55,13 +56,15 @@ class AI:
         return (self.name == other.name and
         self.all_poss_moves_dict == other.all_poss_moves_dict)
 
-    def get_move(self, game):
-        if game.stick_num > len(self.all_poss_moves_dict):
-            for x in range(len(self.all_poss_moves_dict), game.stick_num + 4):
-                self.all_poss_moves_dict[x]= [1,2,3]
-        move = choice(self.all_poss_moves_dict[game.stick_num])
-        self.temp_moves_list.append((game.stick_num,move))
-        print("The computer picked up {} sticks.".format(move))
+    def get_move(self, game, test_bool):
+        move = 0
+        if not test_bool:
+            if game.stick_num > len(self.all_poss_moves_dict):
+                for x in range(len(self.all_poss_moves_dict), game.stick_num + 4):
+                    self.all_poss_moves_dict[x]= [1,2,3]
+            move = choice(self.all_poss_moves_dict[game.stick_num])
+            self.temp_moves_list.append((game.stick_num,move))
+            print("The computer picked up {} sticks.".format(move))
         return move
 
     def save_moves(self):
@@ -83,10 +86,11 @@ class AI:
         #     print("The computer picked up {} sticks.".format(move))
         #     return move
 
-def user_turn(name, game):
-    print("\nSticks remaining: {}".format(game.stick_num))
-    move = name.get_move(game)
-    game.stick_num -= move
+def user_turn(name, game, test_bool):
+    if not test_bool:
+        print("\nSticks remaining: {}".format(game.stick_num))
+        move = name.get_move(game, False)
+        game.stick_num -= move
     if game.stick_num <= 0:
         name.lose_bool = True
 
@@ -172,5 +176,4 @@ def main():
                 else:
                     break
 
-# main()
-print()
+#main()

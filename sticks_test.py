@@ -55,12 +55,3 @@ def test_ai_get_move():
 def test_user_turn_sets_loser_to_true():
     user_turn(test_player, zero_stick_game, True)
     assert test_player.lose_bool == True
-
-def test_get_move():
-    pass
-
-
-def test_user_turn():
-    pass
-if __name__ == "__main__":
-    main()

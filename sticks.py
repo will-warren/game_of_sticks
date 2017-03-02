@@ -20,7 +20,6 @@ class Player:
             while move < 1 or move > 3:
                 print("That wasn't a valid choice, {}".format(self.name))
                 move = int(input("\nHow many sticks do you want to pick up, {}? (1-3)".format(self.name)))
-            self.moves_list.append(move)
         return move
 
 class Game:
@@ -122,10 +121,10 @@ def main():
 
         # game loop
         while this_game.stick_num > 0:
-            user_turn(player1, this_game)
+            user_turn(player1, this_game, False)
             if player1.lose_bool:
                 break
-            user_turn(player2, this_game)
+            user_turn(player2, this_game, False)
 
 
         if player1.lose_bool:
@@ -145,10 +144,10 @@ def main():
             #game_loop
             # game loop
             while this_game.stick_num > 0:
-                user_turn(player1, this_game)
+                user_turn(player1, this_game, False)
                 if this_game.stick_num == 0:
                     break
-                user_turn(ai, this_game)
+                user_turn(ai, this_game, False)
 
             if player1.lose_bool:
                 print("\n\nGame Over!  The computer won! Better luck next time, {}.\n".format(player1.name))
@@ -176,4 +175,6 @@ def main():
                 else:
                     break
 
-#main()
+
+if __name__ == "__main__":
+    main()

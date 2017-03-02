@@ -3,6 +3,8 @@
 
 Repository Name = sticks
 
+Dana Walker & Will Warren
+
 files:
 
 1. README.md, this files

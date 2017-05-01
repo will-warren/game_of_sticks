@@ -1,31 +1,36 @@
 # game_of_sticks
+Create a version of the Game of Sticks where human and AI players can play against each other.
 
+In the Game of Sticks there is a heap of sticks on a board. On their turn, each player picks up 1 to 3 sticks. The one who has to pick the final stick will be the loser.
 
-Repository Name = sticks
+Created by Dana Walker and [Will Warren](https://willwile4.github.io)
 
-Dana Walker & Will Warren
+## Objectives
+* Understand lists and tuples
+* Be able to use functions effectively
+* Be able to build a simple AI
 
-files:
+## How To run
+1. Make sure python3 is installed on your computer
+2. Clone this Repository
+3. In that newly cloned repository, via CLI run "$ python3 sticks.py"
+4. Play the game!
 
-1. README.md, this files
+## Files
+1. README.md,
 2. sticks.py
   - a fully functional game of sticks with a fully functional AI
-  - run via terminal/shell "python3 sticks.py" from its directory
 3. sticks_test.py
   - a test suite for sticks
-  - all tests pass, though admittedly, the game could be written better
- (ahem...refactored) to have more testable code
+  - all tests pass.
  4. ai.py
-  - our AI class
+  - AI class
 5. game.py
-  - our game class
+  -  Game class
 6. player.py
- - our player class
+ - Player class
 
- YOU DO NOT NEED TO DL ai.py, game.py, or player.py to run the program. All of the classes are contained in the final submitted sticks.py file. :)
 
- Notes/Observations
- - This would be much easier to read if it were refactored a few times. but
- alas... deadlines
+### Notes/Observations
+ - This would be much easier to read if it were refactored a few times.
  - We are kicking ourselves for not writing the tests first
- - Refactoring..yay
